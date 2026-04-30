@@ -25,11 +25,13 @@ RegisterNumber:  212224230131
 */
 
 
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.array(eval(input()))
-y = np.array(eval(input()))
+x = np.array(eval(input("Enter x values: ")))
+y = np.array(eval(input("Enter y values: ")))
 
 x_mean = np.mean(x)
 y_mean = np.mean(y)
@@ -39,21 +41,34 @@ denom = 0
 for i in range(len(x)):
     num += (x[i] - x_mean) * (y[i] - y_mean)
     denom += (x[i] - x_mean) ** 2
+
 m = num / denom
 
 b = y_mean - m * x_mean
-print(m, b)
+
+print("\nSlope (m):", m)
+print("Intercept (b):", b)
 
 y_predicted = m * x + b
-print(y_predicted)
+print("\nPredicted values:", y_predicted)
+
+mse = np.mean((y - y_predicted) ** 2)
+
+rmse = np.sqrt(mse)
+
+print("\nMean Squared Error (MSE):", mse)
+print("Root Mean Squared Error (RMSE):", rmse)
 
 plt.scatter(x, y)
 plt.plot(x, y_predicted, color='red')
+plt.xlabel("X values")
+plt.ylabel("Y values")
+plt.title("Linear Regression")
 plt.show()
 ```
 
 ## Output:
-<img width="1341" height="653" alt="image" src="https://github.com/user-attachments/assets/870fd5af-e238-4f3e-a157-c19d658a6479" />
+<img width="1325" height="820" alt="image" src="https://github.com/user-attachments/assets/bdafe01a-a4ad-40f7-a102-85ce9494e679" />
 
 
 
